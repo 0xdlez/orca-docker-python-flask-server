@@ -1,17 +1,20 @@
-FROM ubuntu:18.04
+# REQUIRED ENV
+# OS: ubuntu (16.04 LTS or higher)
+# 
 
-# setup python
+# base on python 3.6
+FROM python:3.6
+RUN python --version
+RUN pip --version
+
+# install common packages
 RUN apt-get update
-RUN apt-get install -y python3-pip python3-dev cmake libxrender1 libsm6 libxext6 \
-	&& cd /usr/local/bin \
-	&& ln -s /usr/bin/python3 python \
-	&& pip3 install --upgrade pip
+RUN apt-get install -y cmake libxrender1 libsm6 libxext6
 
-# setup flask packages
-RUN pip3 install flask \
-	tensorflow \
+# install flask packages
+RUN pip install flask \
 	flask_socketio \
 	flask_cors
 	
 # setup uwsgi
-RUN pip3 install uwsgi
+RUN pip install uwsgi
