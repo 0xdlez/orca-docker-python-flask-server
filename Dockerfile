@@ -15,4 +15,3 @@ RUN pip3 install flask \
 	
 # setup uwsgi
 RUN pip3 install uwsgi
-COPY ./config/server.ini ./app/server.ini
